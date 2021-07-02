@@ -15,8 +15,13 @@ class EstadoCivil(models.Model):
 
 # Create your models here.
 class Aluno(models.Model):
+    class Sexo(models.TextChoices):
+        MASCULINO = ('M', 'Masculino',)
+        FEMININO = ('F', 'Feminino',)
+
     id = models.AutoField(primary_key=True, null=False)
     nome = models.CharField(db_column='tx_nome', max_length=100, null=False, blank=False)
+    sexo = models.CharField(db_column='cs_sexo', max_length=1, null=True, blank=True, choices=Sexo.choices)
     estado_civil = models.ForeignKey(
         to='EstadoCivil',
         on_delete=models.DO_NOTHING,
