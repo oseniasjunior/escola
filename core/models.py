@@ -22,7 +22,8 @@ class Aluno(models.Model):
         on_delete=models.DO_NOTHING,
         db_column='id_estado_civil',
         null=True,
-        blank=True
+        blank=True,
+        related_name='alunos'
     )
     cursos = models.ManyToManyField(to='Curso', through='CursoAluno')
 
